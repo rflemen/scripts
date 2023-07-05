@@ -2,19 +2,16 @@
 # COUNT DIRECTORIES IN A DIRECTORY AND DELETE OLDEST
 # Verion 1
 # Author: Rob Flemen
-# Email: rob@marleylilly.com
+# Email: rflemen@gmail.com
 
 # Script to count the number of directories in current directory
-# and delete the oldest on if it exceeds the limit set.
+# and delete the oldest on if it exceeds the max set.
 
 current_dir=$(pwd)
 date_stamp=$(date +%m-%d-%Y)
 time_stamp=$(date +%H_%M_%S)
 log_file_name="/home/mladmin/usb_backup/logs/${date_stamp}_clean_dir.log"
-email_receipient="rob@marleylilly.com"
-
-
-# Set maximum directories for current directory
+email_receipient="rflemen@gmail.com"
 max_dirs=6
 
 # Determine the number of directories in current directory
