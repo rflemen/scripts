@@ -15,7 +15,7 @@ email_receipient="rob@marleylilly.com"
 
 
 # Set maximum directories for current directory
-max_dirs=4
+max_dirs=6
 
 # Determine the number of directories in current directory
 num_of_dirs=$(ls -d */ | wc -l)
