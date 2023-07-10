@@ -41,13 +41,11 @@ echo "The oldest directory here is: ${oldest_dir}" >> "${log_file_name}"
 echo >> "${log_file_name}"
 
 #Check to see if we over linit and delete oldest directory, if needed
-if [ $num_of_dirs -gt $max_dirs ]
-then
+if [ $num_of_dirs -gt $max_dirs ]; then
         echo "We are over the limit so we're deleting ${oldest_dir}" >> "${log_file_name}"
         sleep 5
         rm -rf ${oldest_dir}
-        if [ $? == 0 ]
-        then
+        if [ $? == 0 ]; then
                 echo "SUCCESS! ${oldest_dir} has been deleted!" >> "${log_file_name}"
                 echo >> "${log_file_name}"
         else
