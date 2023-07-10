@@ -73,8 +73,7 @@ sleep 10
 currently_running=$(systemctl status "${service_name}" | grep -o running)
 currently_failed=$(systemctl status "${service_name}" | grep -o failed)
 
-if [[ "$currently_running" == "running" ]]
-then
+if [[ "$currently_running" == "running" ]]; then
         echo "HOORAY!!! ${service_name} is most definitely UP and ${currently_running}!!!" >> "${log_file_name}"
 elif [[ "$currently_failed" == "failed" ]]; then
         echo "OH NO!!! The ${service_name} ${currently_failed} to start and is NOT running!!!" >> "${log_file_name}"
