@@ -5,16 +5,20 @@
 # Email: rflemen@gmail.com
 
 # Script to count the number of directories in current directory
-# and delete the oldest one if it exceeds the max set.
+# and delete the oldest on if it exceeds the limit set.
 
-current_dir=$(pwd)
+current_dir="/home/mladmin/Backups/snipeit"
 date_stamp=$(date +%m-%d-%Y)
 time_stamp=$(date +%H_%M_%S)
-log_file_name="/home/mladmin/usb_backup/logs/${date_stamp}_clean_dir.log"
-email_receipient="rflemen@gmail.com"
-max_dirs=6
+log_file_name="/home/mladmin/Backups/logs/${date_stamp}_clean_dir.log"
+email_receipient="rob@marleylilly.com"
+
+
+# Set maximum directories for current directory
+max_dirs=3
 
 # Determine the number of directories in current directory
+cd "${current_dir}"
 num_of_dirs=$(ls -d */ | wc -l)
 
 # Determine which of the directories is the oldest
