@@ -4,17 +4,16 @@
 # Author: Rob Flemen
 # Email: rflemen@gmail.com
 
-# Script to count the number of directories in current directory
+# Script to count the number of directories in specified directory
 # and delete the oldest on if it exceeds the limit set.
 
 current_dir="/home/mladmin/Backups/snipeit"
 date_stamp=$(date +%m-%d-%Y)
 time_stamp=$(date +%H_%M_%S)
 log_file_name="/home/mladmin/Backups/logs/${date_stamp}_clean_dir.log"
-email_receipient="rob@marleylilly.com"
+email_receipient="rflemen@gmail.com"
 
-
-# Set maximum directories for current directory
+# Set maximum number of allowed directories
 max_dirs=3
 
 # Determine the number of directories in current directory
@@ -40,7 +39,7 @@ echo >> "${log_file_name}"
 echo "The oldest directory here is: ${oldest_dir}" >> "${log_file_name}"
 echo >> "${log_file_name}"
 
-#Check to see if we over linit and delete oldest directory, if needed
+#Check to see if we are the over directory limit. Delete the oldest directory, if needed
 if [ $num_of_dirs -gt $max_dirs ]; then
         echo "We are over the limit so we're deleting ${oldest_dir}" >> "${log_file_name}"
         sleep 5
