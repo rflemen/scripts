@@ -7,9 +7,9 @@
 # Script to export a backup .ova file of the vm running in VirtualBox
 # Set values for service, vm, time stamp, backup path, email address
 # and log file name.
-# NOTE: You must have have the systemctl and ssmtp commands
-# set for sudoers with no password. Must have ssmtp package installed
-# and configured to be able to have the log/status email sent.
+# NOTE: Must have ssmtp package installed and configured to be able 
+# to have the log/status email sent. You must have have the systemctl and 
+# ssmtp commands set for sudoers with no password.
 
 app_name="SnipeIt"
 service_name="snipe-it.service"
