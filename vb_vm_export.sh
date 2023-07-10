@@ -1,20 +1,23 @@
 #!/bin/bash
 # EXPORT .OVA OF VIRTUALBOX VIRTUAL MACHINE
-# Verion 2
+# Verion 3
 # Author: Rob Flemen
-# Email: rflemen@gmail.com
+# Email: rob@marleylilly.com
 
 # Script to export a backup .ova file of the vm running in VirtualBox
 # Set values for service, vm, time stamp, backup path, email address
 # and log file name.
+# NOTE: You must have have the systemctl and ssmtp commands
+# set for sudoers with no password. Must have ssmtp package installed
+# and configured to be able to have the log/status email sent.
 
-app_name="FDSS"
-service_name="fdss-vm.service"
-vm_name="fdss"
+app_name="SnipeIt"
+service_name="snipe-it.service"
+vm_name="snipeit"
 time_stamp=$(date +%m-%d-%Y-%H-%M-%S)
-backuppath="/home/rflemen/Backups/fdss"
-email_receipient="rflemen@gmail.com"
-log_file_name="/home/rflemen/Backups/fdss/logs/${time_stamp}_backup.log"
+backuppath="/home/mladmin/Backups/snipeit"
+email_receipient="rob@marleylilly.com"
+log_file_name="/home/mladmin/Backups/logs/${time_stamp}_backup.log"
 
 # Header for the logfile
 echo "*************************************" >> "${log_file_name}"
@@ -27,8 +30,7 @@ echo >> "${log_file_name}"
 # Create a folder with a date/time stamp for a name
 echo "---Creating Date Stamped Directory---" >> "${log_file_name}"
 mkdir -p "${backuppath}/${time_stamp}"
-if [ $? == 0 ]
-then
+if [ $? == 0 ]; then
         echo "SUCCESS! Directory created!" >> "${log_file_name}"
         echo >> "${log_file_name}"
 else
@@ -39,9 +41,8 @@ fi
 # Stop the service
 echo "---Stopping ${service_name}---" >> "${log_file_name}"
 sudo systemctl stop "${service_name}" >> "${log_file_name}" 2>&1
-if [ $? == 0 ]
-then
-        echo "SUCCESS! ${service_name} stopped" >> "${log_file_name}"
+if [ $? == 0 ]; then
+        echo "SUCCESS! ${service_name} stop command issed!" >> "${log_file_name}"
         echo >> "${log_file_name}"
 else
         echo "Something went wrong!" >> "${log_file_name}"
@@ -58,9 +59,8 @@ echo  >> "${log_file_name}"
 echo "---Starting ${service_name}---" >> "${log_file_name}"
 sleep 20
 sudo systemctl start "${service_name}" >> "${log_file_name}" 2>&1
-if [ $? == 0 ]
-then
-        echo "SUCCESS! ${service_name} started!" >> "${log_file_name}"
+if [ $? == 0 ]; then
+        echo "SUCCESS! ${service_name} start command issued!" >> "${log_file_name}"
         echo >> "${log_file_name}"
 else
         echo "Something went wrong!" >> "${log_file_name}"
@@ -68,16 +68,25 @@ else
 fi
 
 #Checking the status of the service and appending to log
+echo "---Checking status of ${service_name}---" >> "${log_file_name}"
 sleep 10
-echo "---Checking status of ${service_name}, if active (running), we're good!---" >> "${log_file_name}"
-systemctl status "${service_name}" | grep Active >> "${log_file_name}"
+currently_running=$(systemctl status "${service_name}" | grep -o running)
+currently_failed=$(systemctl status "${service_name}" | grep -o failed)
+
+if [[ "$currently_running" == "running" ]]
+then
+        echo "HOORAY!!! ${service_name} is most definitely UP and ${currently_running}!!!" >> "${log_file_name}"
+elif [[ "$currently_failed" == "failed" ]]; then
+        echo "OH NO!!! The ${service_name} ${currently_failed} to start and is NOT running!!!" >> "${log_file_name}"
+else
+        echo "Well shit, something went HORRIBLY wrong!!!" >> "$log_file_name}"
+fi
+
 echo >> "${log_file_name}"
-echo "Thanks for playing & GOODBYE!!!" >> "${log_file_name}"
+echo "Thank you and have a great day!!!" >> "${log_file_name}"
 
 # Send a copy of the logfile to interested parties
 cat "${log_file_name}"  | sudo ssmtp "${email_receipient}"
 
 # *********************Future Enhancements********************
-# Save multiple copies of .ova in a folder with date of export
-# Setup a monthly cron job to do the execution of the script (1 time a month)
-# Create a cleanup section that deletes the oldest copy of the 12 that are saved as a new one is exported
+# TBD
