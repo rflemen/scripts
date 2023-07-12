@@ -1,5 +1,5 @@
 #!/bin/bash
-# EXPORT .OVA OF VIRTUALBOX VIRTUAL MACHINE v3
+# EXPORT .OVA OF VIRTUALBOX VIRTUAL MACHINE v4
 # Author: Rob Flemen    Email: rflemen@gmail.com
 # Script to export a backup .ova file of the vm running in VirtualBox
 # REQUIRES: ssmtp package & systemctl and ssmtp via sudo w/ no password
