@@ -53,7 +53,7 @@ echo "---Creating Date Stamped Directory---" >> "${log_file_name}"
 mkdir -p "${backup_path}/${time_stamp}"
 check_for_success $? "${log_file_name}" "${email_receipient}"
 
-# Stop the service
+# Stop the service & verify state
 echo >> "${log_file_name}"
 echo "---Stopping ${service_name}---" >> "${log_file_name}"
 sudo systemctl stop "${service_name}" >> "${log_file_name}" 2>&1
@@ -65,17 +65,12 @@ echo >> "${log_file_name}"
 echo "---Exporting VM to an .ova File---" >> "${log_file_name}"
 VBoxManage export "${vm_name}" -o "${backup_path}/${time_stamp}/${vm_name}.ova" >> "${log_file_name}" 2>&1
 
-# Start the service
+# Start the service & verify state
 echo >> "${log_file_name}"
 echo "---Starting ${service_name}---" >> "${log_file_name}"
-sleep 10
 sudo systemctl start "${service_name}" >> "${log_file_name}" 2>&1
 check_for_success $? "${log_file_name}" "${email_receipient}"
-
-#Checking the status of the service and appending to log
-echo >> "${log_file_name}"
-echo "---Checking status of ${service_name}---" >> "${log_file_name}"
-sleep 10
+sleep 10 #give service a chance to completely start
 verify_service_state "${service_name}" "${log_file_name}" "${email_receipient}"
 
 # Send a copy of the logfile to interested parties
