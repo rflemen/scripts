@@ -59,7 +59,7 @@ sudo systemctl stop "${service_name}" >> "${log_file_name}" 2>&1
 check_for_success $? "${log_file_name}" "${email_receipient}"
 verify_service_state "${service_name}" "${log_file_name}" "${email_receipient}"
 
-#Export a copy of the vm to a .ova file
+# Export a copy of the vm to an .ova file
 echo >> "${log_file_name}"
 echo "---Exporting VM to an .ova File---" >> "${log_file_name}"
 VBoxManage export "${vm_name}" -o "${backup_path}/${time_stamp}/${vm_name}.ova" >> "${log_file_name}" 2>&1
