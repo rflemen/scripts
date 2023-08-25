@@ -1,14 +1,15 @@
 #/bin/bash
 # CONCERTO STATUS CHECK SCRIPT v1
-# Author: Rob Flemen    Email: rob@marleylilly.com
+# Author: Rob Flemen    Email: rflemen@gmail.com
 # REQUIRES: ssmtp package. Need systemctl and ssmtp set for sudoers with no password.
 
 # Global variables
 date_stamp=$(date +%m-%d-%Y)
 log_file_name="/home/concerto/logs/${date_stamp}_concerto_status.log"
-email_recipient="rob@marleylilly.com"
+email_recipient="rflemen@gmail.com"
 site="192.168.0.20"
 drive="sda1"
+threshold=15
 
 # Funtion to send email. Args: (1)log file name, (2)email address
 function email_log () {
@@ -49,13 +50,12 @@ echo "***************************************" >> "${log_file_name}"
 date >> "${log_file_name}"
 echo >> "${log_file_name}"
 
-# Checking status of the website.
+# Checking response of the website.
 echo "1.) CHECKING STATUS OF CONCERTO:" >> "${log_file_name}"
 get_site_status "${site}" "${log_file_name}" "${email_recipient}"
 check_for_success $? "${log_file_name}" "${email_recipient}"
 echo  >> "${log_file_name}"
 
-# Checking response of the website
 echo "2.) CHECKING CONNECTIVITY TO CONCERTO:" >> "${log_file_name}"
 get_site_stats "${site}" "${log_file_name}"
 check_for_success $? "${log_file_name}" "${email_recipient}"
@@ -63,9 +63,22 @@ echo  >> "${log_file_name}"
 
 # Dumping the current disk space available.
 echo "3.) CHECKING DISKSPACE:" >> "${log_file_name}"
-df -h | grep "${drive}" >> "${log_file_name}" 2>&1
+echo "...checking disk space..." >> "${log_file_name}"
+percent_free=$(df -h | grep "${drive}" | xargs | cut -d ' ' -f 5)
 check_for_success $? "${log_file_name}" "${email_recipient}"
-echo >> "${log_file_name}"
+echo "Available disk space is:" "${percent_free}" >> "${log_file_name}" 2>&1
+echo "...ensuring disk space is sufficient..." >> "${log_file_name}"
+space_free=$(df -h | grep sda1 | xargs | cut -d ' ' -f 5 | cut -d "%" -f 1)
+check_for_success $? "${log_file_name}" "${email_recipient}"
+
+# Dertermining if disk space is an issue.
+if [[ "${space_free}" < "${threshold}" ]]; then
+        echo "DANGEROUSLY LOW HARD DRIVE SPACE! PLEASE REMEDIATE ASAP!" >> "${log_file_name}"
+elif [[ "${space_free}" > "${threshold}" ]]; then
+        echo "Hard drive space is sufficient!" >> "${log_file_name}"
+else
+        echo "Unable to accurately assess the situation! Please verify!" >> "${log_file_name}"
+fi
 
 # Send a copy of the logfile to interested parties
 email_log "${log_file_name}" "${email_recipient}"
