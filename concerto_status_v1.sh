@@ -6,7 +6,7 @@
 # Global variables
 date_stamp=$(date +%m-%d-%Y)
 log_file_name="/home/concerto/logs/${date_stamp}_concerto_status.log"
-email_recipient="rflemen@gmail.com"
+email_recipient="rob@marleylilly.com"
 site="192.168.0.20"
 drive="sda1"
 
