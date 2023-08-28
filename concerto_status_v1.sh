@@ -9,7 +9,6 @@ log_file_name="/home/concerto/logs/${date_stamp}_concerto_status.log"
 email_recipient="rflemen@gmail.com"
 site="192.168.0.20"
 drive="sda1"
-threshold=15
 
 # Funtion to send email. Args: (1)log file name, (2)email address
 function email_log () {
@@ -66,19 +65,7 @@ echo "3.) CHECKING DISKSPACE:" >> "${log_file_name}"
 echo "...checking disk space..." >> "${log_file_name}"
 percent_free=$(df -h | grep "${drive}" | xargs | cut -d ' ' -f 5)
 check_for_success $? "${log_file_name}" "${email_recipient}"
-echo "Available disk space is:" "${percent_free}" >> "${log_file_name}" 2>&1
-echo "...ensuring disk space is sufficient..." >> "${log_file_name}"
-space_free=$(df -h | grep sda1 | xargs | cut -d ' ' -f 5 | cut -d "%" -f 1)
-check_for_success $? "${log_file_name}" "${email_recipient}"
-
-# Dertermining if disk space is an issue.
-if [[ "${space_free}" < "${threshold}" ]]; then
-        echo "DANGEROUSLY LOW HARD DRIVE SPACE! PLEASE REMEDIATE ASAP!" >> "${log_file_name}"
-elif [[ "${space_free}" > "${threshold}" ]]; then
-        echo "Hard drive space is sufficient!" >> "${log_file_name}"
-else
-        echo "Unable to accurately assess the situation! Please verify!" >> "${log_file_name}"
-fi
+echo "Disk space consumed is:" "${percent_free}" >> "${log_file_name}" 2>&1
 
 # Send a copy of the logfile to interested parties
 email_log "${log_file_name}" "${email_recipient}"

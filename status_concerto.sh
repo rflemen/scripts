@@ -9,7 +9,6 @@ log_file="/home/concerto/logs/${date_stamp}_concerto.log"
 current_dir="/usr/share/concerto/tmp/cache"
 site="http://192.168.0.20"
 drive="sda1"
-threshold="20"
 
 # Determine the number of directories in current directory
 cd "${current_dir}"
