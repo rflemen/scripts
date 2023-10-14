@@ -3,11 +3,11 @@ Description=Autostart VirtualBox VM instance fdss
 After=network.target vboxdrv.service
 
 [Service]
-User=rflemen
 Type=simple
-Restart=always
+User=rflemen
 ExecStart=/usr/bin/vboxheadless -s fdss
 ExecStop=/usr/bin/VBoxManage controlvm fdss acpipowerbutton
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
