@@ -1,13 +1,13 @@
 #!/bin/bash
 # COUNT DIRECTORIES IN A DIRECTORY AND DELETE OLDEST v2
-# Author: Rob Flemen    Email: rob@marleylilly.com
+# Author: Rob Flemen    Email: <insert email address>
 # Script to count the number of directories in current directory
 # and delete the oldest on if it exceeds the limit set.
 
 current_dir="/home/mladmin/Backups/snipeit"
 date_stamp=$(date +%m-%d-%Y)
 log_file_name="/home/mladmin/Backups/logs/${date_stamp}_clean_dir.log"
-email_receipient="rob@marleylilly.com"
+email_receipient="<insert email address>"
 max_dirs=3
 
 # Determine the number of directories in current directory
