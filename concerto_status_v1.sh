@@ -1,12 +1,12 @@
 #/bin/bash
 # CONCERTO STATUS CHECK SCRIPT v1
-# Author: Rob Flemen    Email: rflemen@gmail.com
+# Author: Rob Flemen    Email: <insert email address>
 # REQUIRES: ssmtp package. Need systemctl and ssmtp set for sudoers with no password.
 
 # Global variables
 date_stamp=$(date +%m-%d-%Y)
 log_file_name="/home/concerto/logs/${date_stamp}_concerto_status.log"
-email_recipient="rflemen@gmail.com"
+email_recipient="<insert email address>"
 site="192.168.0.20"
 drive="sda1"
 
