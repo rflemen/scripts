@@ -1,6 +1,6 @@
 #/bin/bash
 # CONCERTO STATUS SCRIPT v2
-# Author: Rob Flemen, Email: rflemen@gmail.com
+# Author: Rob Flemen, Email: <insert email address>
 # Requires ssmtp, curl, wget packages; ssmtp as sudoer w/ no password
 
 # Global variables
@@ -63,5 +63,5 @@ echo >> "${log_file}"
 echo "Have a great day!" >> "${log_file}"
 
 # Emailing the log to interested parties
-cat "${log_file}" | sudo ssmtp rflemen@gmail.com
+cat "${log_file}" | sudo ssmtp <insert email address>
 
