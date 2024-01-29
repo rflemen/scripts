@@ -14,11 +14,11 @@ log_file_name="/Backups/logs/del_old_backups.log"
 max_files=30
 email_recipient="rob@marleylilly.com"
 
-# Determine the number of directories in current directory
+# Determine the number of files in current directory
 cd "${current_dir}"
 num_of_files=$(find . -maxdepth 1 -type f | wc -l)
 
-# Determine which of the directories is the oldest
+# Determine which of the files is the oldest
 oldest_file=$(find . -maxdepth 1 -type f | sort | head -n 1)
 
 # Header for the logfile
