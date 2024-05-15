@@ -1,7 +1,7 @@
 #/bin/bash
 # CONCERTO STATUS CHECK SCRIPT v1
 # Author: Rob Flemen    Email: <insert email address>
-# REQUIRES: ssmtp package. Need systemctl and ssmtp set for sudoers with no password.
+# REQUIRES: ssmtp package. Need systemctl and ssmtp set for sudoers with no password...
 
 # Global variables
 date_stamp=$(date +%m-%d-%Y)
