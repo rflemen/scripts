@@ -17,11 +17,6 @@ num_of_dirs=$(ls -d */ | wc -l)
 # Determine which of the directories is the oldest
 oldest_dir=$(ls -dtr */ | head -n 1)
 
-# Header for the logfile
- echo "[+] Running Backup Retention Cleanup Script" >> "${log_file_name}"
-        echo "[-]      Current dir: ${current_dir}" >> "${log_file_name}"
-echo >> "${log_file_name}"
-
 function print_stats () {
         echo "[-]      Max dirs: ${max_dirs}" >> "${log_file_name}"
         echo "[-]      Number of dirs: ${num_of_dirs}" >> "${log_file_name}"
@@ -29,10 +24,15 @@ function print_stats () {
         echo >> "${log_file_name}"
 }
 
+# Header for the logfile
+ echo "[+] Running Backup Retention Cleanup Script" >> "${log_file_name}"
+        echo "[-]      Current dir: ${current_dir}" >> "${log_file_name}"
+echo >> "${log_file_name}"
+
 # Check to see if we over limit and if needed delete oldest directory or directories
 
 while [ $num_of_dirs -gt $max_dirs ]; do
-        echo "[+] ${num_of_dirs} directories, over the limit - deleting ${oldest_dir}" >> "${log_file_name}"
+        echo "[+] ${num_of_dirs} directories, over the limit of ${max_dirs} - deleting ${oldest_dir}" >> "${log_file_name}"
         rm -rf ${oldest_dir}
         if [ $? == 0 ]; then
                 echo "[-]      Successfully deleted ${oldest_dir}" >> "${log_file_name}"
