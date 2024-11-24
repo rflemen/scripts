@@ -23,7 +23,6 @@ oldest_dir=$(ls -dtr */ | head -n 1)
 echo >> "${log_file_name}"
 
 function print_stats () {
-
         echo "[-]      Max dirs: ${max_dirs}" >> "${log_file_name}"
         echo "[-]      Number of dirs: ${num_of_dirs}" >> "${log_file_name}"
         echo "[-]      Oldest dir: ${oldest_dir}" >> "${log_file_name}"
