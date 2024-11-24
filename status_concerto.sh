@@ -25,7 +25,7 @@ echo "[+] Checking status of ${application}:" >> "${log_file}"
 if wget --spider -S "${site}" 2>&1 | grep -w "200\|301" >> "${log_file}" ; then
     echo "[-] ${site} is up" >> "${log_file}"
 else
-    echo "[-] ${site} is down" >> "${log_file}"
+    echo "[x] ${site} is down" >> "${log_file}"
 fi
 
 # Checking connectivity using curl.
@@ -53,7 +53,7 @@ percent_free=$((100-${percent_full}))
 if [ "${percent_full}" -ge "${threshold}" ]; then
         echo "[-] Hard drive is OK with ${percent_free}% free space" >> "${log_file}"
 else
-        echo "[-] Hard drive is LOW with  ${percent_free}% free space!" >> "${log_file}"
+        echo "[!] Hard drive is LOW with  ${percent_free}% free space!" >> "${log_file}"
 fi
 
 # Emailing the log to interested parties
