@@ -1,6 +1,6 @@
 #!/bin/bash
-# EXPORT .OVA OF VIRTUALBOX VIRTUAL MACHINE v5
-# Author: Rob Flemen    Email: rob@marleylilly.com
+# EXPORT .OVA OF VIRTUALBOX VIRTUAL MACHINE
+# Author: Rob Flemen
 # REQUIRES: ssmtp package. Need systemctl and ssmtp set for sudoers with no password.
 
 # Global variables

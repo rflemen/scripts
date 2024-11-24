@@ -1,6 +1,6 @@
 #/bin/bash
-# CONCERTO STATUS SCRIPT v1
-# Author: Rob Flemen, Email: rflemen@gmail.com
+# CONCERTO STATUS SCRIPT
+# Author: Rob Flemen
 # Requires ssmtp, curl, wget packages; ssmtp as sudoer w/ no password
 
 # Global variables

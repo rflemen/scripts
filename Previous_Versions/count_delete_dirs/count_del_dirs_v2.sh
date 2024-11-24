@@ -1,5 +1,5 @@
 #!/bin/bash
-# COUNT DIRECTORIES IN A DIRECTORY AND DELETE OLDEST v2
+# COUNT DIRECTORIES IN A DIRECTORY AND DELETE OLDEST
 # Author: Rob Flemen    Email: <insert email address>
 # Script to count the number of directories in current directory
 # and delete the oldest on if it exceeds the limit set.

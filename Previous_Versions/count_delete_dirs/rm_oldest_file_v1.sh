@@ -1,8 +1,6 @@
 #!/bin/bash
 # COUNT FILES IN A DIRECTORY AND DELETE OLDEST
-# Verion 1
 # Author: Rob Flemen
-# Email: rob@marleylilly.com
 
 # Script to count the number of files in current directory
 # and delete the oldest one if it exceeds the max set.

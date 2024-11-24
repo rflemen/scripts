@@ -1,8 +1,6 @@
 #!/bin/bash
 # EXPORT .OVA OF VIRTUALBOX VIRTUAL MACHINE
-# Verion 3
 # Author: Rob Flemen
-# Email: rflemen@gmail.com
 
 # Script to export a backup .ova file of the vm running in VirtualBox
 # Set values for service, vm, time stamp, backup path, email address

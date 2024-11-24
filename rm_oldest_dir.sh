@@ -1,6 +1,6 @@
 #!/bin/bash
-# COUNT DIRECTORIES IN A DIRECTORY AND DELETE OLDEST v1
-# Author: Rob Flemen    Email: rflemen@gmail.com
+# COUNT DIRECTORIES IN A DIRECTORY AND DELETE OLDEST
+# Author: Rob Flemen
 
 current_dir="/home/Public/Backups/fdss"
 log_file_name="/home/rflemen/logs/del_old_backups.log"
