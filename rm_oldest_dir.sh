@@ -4,7 +4,7 @@
 
 current_dir="/home/Public/Backups/fdss"
 log_file_name="/home/rflemen/logs/del_old_backups.log"
-email_receipient="rflemen@gmail.com"
+email_receipient="test@gmail.com"
 NOW=$(date +"%m_%d_%Y")
 
 # Set maximum directories for current directory
