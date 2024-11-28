@@ -7,7 +7,7 @@
 current_dir="/home/mladmin/Backups/snipeit"
 date_stamp=$(date +%m-%d-%Y)
 log_file_name="/home/mladmin/Backups/logs/${date_stamp}_clean_dir.log"
-email_receipient="rflemen@gmail.com"
+email_receipient="test@gmail.com"
 max_dirs=3
 
 # Determine the number of directories in current directory
