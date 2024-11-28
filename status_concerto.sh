@@ -57,4 +57,4 @@ else
 fi
 
 # Emailing the log to interested parties
-cat "${log_file}" | sudo ssmtp rflemen@gmail.com
+cat "${log_file}" | sudo ssmtp test@gmail.com
