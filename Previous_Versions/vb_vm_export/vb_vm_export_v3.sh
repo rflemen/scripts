@@ -14,7 +14,7 @@ service_name="snipe-it.service"
 vm_name="snipeit"
 time_stamp=$(date +%m-%d-%Y-%H-%M-%S)
 backuppath="/home/mladmin/Backups/snipeit"
-email_receipient="rflemen@gamil.com"
+email_receipient="test@gamil.com"
 log_file_name="/home/mladmin/Backups/logs/${time_stamp}_backup.log"
 
 # Header for the logfile
