@@ -10,7 +10,7 @@ app_name="FDSS"
 time_stamp=$(date +%m-%d-%Y-%H-%M-%S)
 backup_path="/home/Public/Backups/fdss"
 log_file_name="/home/rflemen/logs/concerto_backup.log"
-email_receipient="rflemen@gmail.com"
+email_receipient="test@gmail.com"
 
 # Funtion to send email. Args: (1)log file name, (2)email address
 function email_log () {
