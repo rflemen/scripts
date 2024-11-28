@@ -9,7 +9,7 @@ vm_name="snipeit"
 time_stamp=$(date +%m-%d-%Y-%H-%M-%S)
 backup_path="/home/mladmin/Backups/snipeit"
 log_file_name="/home/mladmin/Backups/logs/${time_stamp}_backup.log"
-email_receipient="rob@marleylilly.com"
+email_receipient="test@gmail.com"
 
 # Funtion to send email. Args: (1)log file name, (2)email address
 function email_log () {
