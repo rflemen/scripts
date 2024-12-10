@@ -10,7 +10,7 @@ date_stamp=$(date +%m-%d-%Y)
 time_stamp=$(date +%H_%M_%S)
 log_file_name="/Backups/logs/del_old_backups.log"
 max_files=30
-email_recipient="rob@marleylilly.com"
+email_recipient="test@gmail.com"
 
 # Determine the number of files in current directory
 cd "${current_dir}"

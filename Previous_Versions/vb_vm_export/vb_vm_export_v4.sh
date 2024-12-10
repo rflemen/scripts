@@ -10,7 +10,7 @@ vm_name="fdss"
 time_stamp=$(date +%m-%d-%Y-%H-%M-%S)
 backuppath="/home/rflemen/Backups/fdss"
 log_file_name="/home/rflemen/Backups/logs/${time_stamp}_backup.log"
-email_receipient="rflemen@gmail.com"
+email_receipient="test@gmail.com"
 
 # Function to send the log via email
 function email_log () {

@@ -56,4 +56,4 @@ echo >> "${log_file}"
 echo "Have a great day!" >> "${log_file}"
 
 # Emailing the log to interested parties
-cat "${log_file}" | sudo ssmtp rflemen@gmail.com
+cat "${log_file}" | sudo ssmtp test@gmail.com
