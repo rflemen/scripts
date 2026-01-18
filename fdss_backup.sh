@@ -1,7 +1,7 @@
 #!/bin/bash
 # EXPORT .OVA OF VIRTUALBOX VIRTUAL MACHINE
 # Author: Rob Flemen
-# REQUIRES: ssmtp package. Need systemctl and ssmtp set for sudoers with no password or run script as root.
+# REQUIRES: ssmtp package. Run script as root.
 
 # Global variables
 service_name="fdss-vm.service"
